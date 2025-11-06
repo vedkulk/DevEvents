@@ -2,13 +2,10 @@ import EventCard from '@/components/EventCard'
 import ExploreBtn from '@/components/ExploreBtn'
 import { IEvent } from '@/database'
 import { events } from '@/lib/constants';
-import { cacheLife } from 'next/cache';
 import React from 'react'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 const Hello = async () => {
-  const response = await fetch(`${BASE_URL}/api/events`, { cache: "no-store" });
+  const response = await fetch(`/api/events`, { next: { revalidate: 60 } });
   const data = await response.json();
   const eventsList: IEvent[] = data.events;
 
