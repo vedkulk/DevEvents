@@ -20,8 +20,11 @@ const EventAgenda = ({ agendaItems }: { agendaItems: string[] }) => {
       <h2>Agenda</h2>
       <ul>
         {agendaItems.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
+          <li key={item}>
+            {item}
+          </li>
+        ))
+        }
       </ul>
     </div>
   )
@@ -88,12 +91,12 @@ const EventsDetailsPage = async ({ params }: { params: Promise<{ slug: string }>
               <EventDetailItem icon='/icons/mode.svg' alt='mode' label={mode} />
               <EventDetailItem icon='/icons/audience.svg' alt='audience' label={audience} />
             </section>
-            <EventAgenda agendaItems={agenda} />
+            <EventAgenda agendaItems={JSON.parse(agenda[0])} />
             <section className="flex-col gap-2">
               <h2>About the Organizer</h2>
               <p>{organizer}</p>
             </section>
-            <EventTags tags={tags} />
+            <EventTags tags={JSON.parse(tags[0])} />
           </div>
         }
         {
