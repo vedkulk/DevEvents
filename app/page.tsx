@@ -11,7 +11,7 @@ const Hello = async () => {
   cacheLife('hours')
   const response = await fetch(`${BASE_URL}/api/events`, { cache: "no-store" });
   const data = await response.json();
-  const eventsList: IEvent[] = data.events;
+  const eventsList: IEvent[] = data.events || [];
 
   return (
     <section>

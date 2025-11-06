@@ -1,5 +1,5 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
-import Event from './event.model';
+import mongoose, { Model, Schema } from "mongoose";
+import Event from "@/database/event.model";
 
 // TypeScript interface for Booking document
 export interface IBooking extends Document {
@@ -59,6 +59,6 @@ BookingSchema.pre('save', async function (next) {
 
 // Use existing model if available (prevents recompilation during hot reload)
 const Booking: Model<IBooking> =
-  mongoose.models.Booking || mongoose.model<IBooking>('Booking', BookingSchema);
+  mongoose.models?.Booking || mongoose.model<IBooking>('Booking', BookingSchema);
 
 export default Booking;

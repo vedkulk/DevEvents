@@ -145,6 +145,6 @@ EventSchema.pre('save', function (next) {
 
 // Use existing model if available (prevents recompilation during hot reload)
 const Event: Model<IEvent> =
-  mongoose.models.Event || mongoose.model<IEvent>('Event', EventSchema);
+  mongoose.models?.Event || mongoose.model<IEvent>('Event', EventSchema);
 
 export default Event;
